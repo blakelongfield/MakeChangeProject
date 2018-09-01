@@ -16,76 +16,75 @@ public class MakeChangeApp {
 		double tendered = scanner.nextDouble();
 
 		while(tendered > price) {
-		changeOwedToCustomer(price, tendered);
+		price = price*100;
+		tendered = tendered*100;
+		int alteredPrice = (int)(price);
+		int alteredTendered = (int)(tendered);
+		changeOwedToCustomer(alteredPrice, alteredTendered);
 		break;
 		}
 		if (tendered < price) {
 			System.out.println("They provided too little money!!");
 		}
-		else {
-			System.out.println("That's the exact amount. No change needed.");
+		while (tendered == price) {
+		System.out.println("That's the exact amount. No change needed.");
+		break;
 		}
+		scanner.close();
 	}
 
-	private static void changeOwedToCustomer(double price, double tendered) {
-		int twenties = 20;
-		int tens = 10;
-		int fives = 5;
-		int ones = 1;
-		double quarters = .25;
-		double dimes = .10;
-		double nickles = .05;
-		double pennies = .01;
+	private static void changeOwedToCustomer(int price, int tendered) {
+		int twenties = 2000;
+		int tens = 1000;
+		int fives = 500;
+		int ones = 100;
+		int quarters = 25;
+		int dimes = 10;
+		int nickles = 5;
+		int pennies = 1;
 
-		double change = tendered - price;
+		int change = tendered - price;
 		System.out.println("Your change:");
-		if (change % twenties > 1) {
-			change = change / twenties;
-			int twentiesOwed = (int) change;
-			System.out.print("20's: " + twentiesOwed);
-			change = change - twentiesOwed;
+		if (change / twenties >= 1) {
+			int twentiesOwed = change / twenties;
+			System.out.println("20's: " + twentiesOwed);
+			change = change - (twentiesOwed*twenties);
 		}
-		else if (change % tens > 1) {
-			change = change / tens;
-			int tensOwed = (int) change;
-			System.out.print("10's: " + tensOwed);
-			change = change - tensOwed;
+//		System.out.println(change);
+		if (change / tens >= 1) {
+			int tensOwed = change / tens;
+			System.out.println("10's: " + tensOwed);
+			change = change - (tensOwed*tens);
 		}
-		else if (change % fives > 1) {
-			change = change / fives;
-			int fivesOwed = (int) change;
+		if (change / fives >= 1) {
+			int fivesOwed = change / fives;
 			System.out.println("5's: " + fivesOwed);
-			change = change - fivesOwed;
+			change = change - (fivesOwed*fives);
 		}
-		else if (change % ones > 1) {
-			change = change / ones;
-			int onesOwed = (int)change;
+		if (change / ones >= 1) {
+			int onesOwed = change / ones;
 			System.out.println("1's: " + onesOwed);
-			change = change - onesOwed;
+			change = change - (onesOwed*ones);
 		}
-		else if (change % quarters > 1) {
-			change = change / quarters;
-			int quartersOwed = (int)change;
+		if (change / quarters >= 1) {
+			int quartersOwed = change / quarters;
 			System.out.println("Quarters: " + quartersOwed);
-			change = change - quartersOwed;
+			change = change - (quartersOwed*quarters);
 		}
-		else if (change % dimes > 1) {
-			change = change / dimes;
-			int dimesOwed = (int)change;
+		if (change / dimes >= 1) {
+			int dimesOwed = change / dimes;
 			System.out.println("Dimes: " + dimesOwed);
-			change = change - dimesOwed;
+			change = change - (dimesOwed*dimes);
 		}
-		else if (change % nickles > 1) {
-			change = change / dimes;
-			int nicklesOwed = (int)change;
+		if (change / nickles >= 1) {
+			int nicklesOwed = change / nickles;
 			System.out.println("Nickles: " + nicklesOwed);
-			change = change - nicklesOwed;
+			change = change - (nicklesOwed*nickles);
 		}
-		else if (change % pennies > 1) {
-			change = change / pennies;
-			int penniesOwed = (int)change;
+		if (change / pennies >= 1) {
+			int penniesOwed = change / pennies;
 			System.out.println("Pennies: " + penniesOwed);
-			change = change - penniesOwed;
+			change = change - (penniesOwed*pennies);
 		}
 	System.out.println("Have a great day!");
 	}
