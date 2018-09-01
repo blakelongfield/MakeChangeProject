@@ -7,11 +7,9 @@ public class MakeChangeApp {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 
-		// The user is prompted asking for the price of the item.
 		System.out.print("Price of the item: ");
 		double price = scanner.nextDouble();
 
-		// The user is then prompted asking how much money was tendered by the customer.
 		System.out.print("How much was tendered: ");
 		double tendered = scanner.nextDouble();
 
